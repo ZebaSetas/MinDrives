@@ -149,6 +149,45 @@ namespace MinDriveTests
             Assert.AreEqual(result, 5);
         }
 
+        [TestMethod]
+        public void CalculateExampleThreeTest()
+        {
+            BacktrackingCalculatorMinDrives calculator = new BacktrackingCalculatorMinDrives();
+            // int[] used = {49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49};
+            // int[] total = {50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50};
+            //int[] used = { 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49 };//, 49, 49, 49, 49, 49 };//,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49};
+            //int[] total = { 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50 };//, 50, 50, 50, 50, 50 };//,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50};
+            int[] useda = { 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49 , 49, 49, 49, 49, 49 ,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49};
+            int[] total = { 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50 , 50, 50, 50, 50, 50 ,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50};
+            List<HardDrive> hardDrives = BuildHardDrives(useda, total);
+            int result = calculator.Calculate(hardDrives);
+            Assert.AreEqual(hardDrives.Count, 50);
+            Assert.AreEqual(result, 49);            
+        }
+
+        [TestMethod]
+        public void CalculateExampleThreeTestWithFirstFull()
+        {
+            BacktrackingCalculatorMinDrives calculator = new BacktrackingCalculatorMinDrives();
+            int[] useda = { 50, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49 };
+            int[] total = { 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50 };
+            List<HardDrive> hardDrives = BuildHardDrives(useda, total);
+            int result = calculator.Calculate(hardDrives);
+            Assert.AreEqual(hardDrives.Count, 50);
+            Assert.AreEqual(result, 50);
+        }
+
+        [TestMethod]
+        public void CalculateExampleThreeTestWithLastFull()
+        {
+            BacktrackingCalculatorMinDrives calculator = new BacktrackingCalculatorMinDrives();
+            int[] used = { 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 50 };
+            int[] total = { 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50 };
+            List<HardDrive> hardDrives = BuildHardDrives(used, total);
+            int result = calculator.Calculate(hardDrives);
+            Assert.AreEqual(hardDrives.Count, 50);
+            Assert.AreEqual(result, 50);
+        }
 
 
 
