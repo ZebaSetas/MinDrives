@@ -8,5 +8,25 @@ namespace Domain
     {
         public HardDrive HardDrive { get; set; }
         public bool IsMarked { get; set; }
+
+        public HardDriveMarked()
+        {
+            IsMarked = false;
+        }
+
+        public int GetFreeSpace()
+        {
+            return HardDrive.GetFreeSpace();
+        }
+
+        public int GetUsedSpace()
+        {
+            return HardDrive.UsedSpace;
+        }
+
+        public void AddData(int amountData)
+        {
+            HardDrive.AddData(amountData);
+        }
     }
 }

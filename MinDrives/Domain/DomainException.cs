@@ -11,5 +11,6 @@ namespace Domain
         public DomainException(string message) : base(message)
         {
         }
+
     }
 }
