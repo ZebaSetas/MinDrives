@@ -1,4 +1,5 @@
 ﻿using System;
+using Domain;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace MinDriveTests
@@ -7,7 +8,7 @@ namespace MinDriveTests
     public class HardDriveTests
     {
         [TestMethod]
-        public void CreateEmptyEntityTest()
+        public void CreateEmptyHardDriveTest()
         {
             HardDrive hardrive = new HardDrive();
             Assert.AreEqual(hardrive.MaxSpace, 0);
