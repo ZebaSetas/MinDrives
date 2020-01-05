@@ -4,6 +4,7 @@ namespace Domain
 {
     public class HardDrive
     {
+        public int Id { get; set; }
         public int MaxSpace { get; set; }
         public int UsedSpace { get; set; }
 
@@ -23,6 +24,12 @@ namespace Domain
             bool spaceWasExceeded = newUsedSpace > MaxSpace;
             if (!spaceWasExceeded) UsedSpace = newUsedSpace;
             else throw new DomainException("Quantity was exceeded");
+        }
+
+        public override bool Equals(object otherHardDrive)
+        {
+            HardDrive other = (HardDrive) otherHardDrive;
+            return this.Id == other.Id;
         }
 
     }

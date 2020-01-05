@@ -70,17 +70,43 @@ namespace MinDriveTests
             Assert.AreEqual(result, 1);
         }
 
+        [TestMethod]
+        public void CalculateWithTwoHardDriveThirdTest()
+        {
+            BacktrackingCalculatorMinDrives calculator = new BacktrackingCalculatorMinDrives();
+            int[] used = { 9, 1 };
+            int[] total = { 10, 10 };
+            List<HardDrive> hardDrives = BuildHardDrives(used, total);
+            int result = calculator.Calculate(hardDrives);
+            Assert.AreEqual(result, 1);
+        }
+
+        [TestMethod]
+        public void CalculateWithTwoHardDriveFourthTest()
+        {
+            BacktrackingCalculatorMinDrives calculator = new BacktrackingCalculatorMinDrives();
+            int[] used = { 1, 9 };
+            int[] total = { 10, 10 };
+            List<HardDrive> hardDrives = BuildHardDrives(used, total);
+            int result = calculator.Calculate(hardDrives);
+            Assert.AreEqual(result, 1);
+        }
+
+
         private List<HardDrive> BuildHardDrives(int[] used, int[] total)
         {
             List<HardDrive> hardDrives = new List<HardDrive>();
+            int nextId = 0;
             for (int i = 0; i < used.Length; i++)
             {
                 HardDrive hardDrive = new HardDrive()
                 {
                     UsedSpace = used[i],
-                    MaxSpace = total[i]
+                    MaxSpace = total[i],
+                    Id = nextId
                 };
                 hardDrives.Add(hardDrive);
+                nextId++;
             }
             return hardDrives;
         }

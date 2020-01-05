@@ -13,6 +13,7 @@ namespace MinDriveTests
             HardDrive hardrive = new HardDrive();
             Assert.AreEqual(hardrive.MaxSpace, 0);
             Assert.AreEqual(hardrive.UsedSpace, 0);
+            Assert.AreEqual(hardrive.Id, 0);
         }
 
         [TestMethod]
@@ -21,10 +22,12 @@ namespace MinDriveTests
             HardDrive hardrive = new HardDrive()
             {
                 MaxSpace = 10,
-                UsedSpace = 1
+                UsedSpace = 1,
+                Id = 1
             };
             Assert.AreEqual(hardrive.MaxSpace, 10);
             Assert.AreEqual(hardrive.UsedSpace, 1);
+            Assert.AreEqual(hardrive.Id, 1);
             Assert.AreEqual(hardrive.GetFreeSpace(), 9);
         }
 
