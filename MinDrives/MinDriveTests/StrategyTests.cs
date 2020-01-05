@@ -103,6 +103,54 @@ namespace MinDriveTests
             Assert.AreEqual(result, 10);
         }
 
+        [TestMethod]
+        public void CalculateTenHardDriveSecondTest()
+        {
+            BacktrackingCalculatorMinDrives calculator = new BacktrackingCalculatorMinDrives();
+            int[] used = { 9, 9, 9, 9, 9, 9, 9, 9, 9, 9 };
+            int[] total = { 11, 11, 11, 11, 11, 11, 11, 11, 11, 11 };
+            List<HardDrive> hardDrives = BuildHardDrives(used, total);
+            int result = calculator.Calculate(hardDrives);
+            Assert.AreEqual(result, 9);
+        }
+
+
+        [TestMethod]
+        public void CalculateExampleZeroTest()
+        {
+            BacktrackingCalculatorMinDrives calculator = new BacktrackingCalculatorMinDrives();
+            int[] used = { 300, 525, 110 };
+            int[] total = { 350, 600, 115 };
+            List<HardDrive> hardDrives = BuildHardDrives(used, total);
+            int result = calculator.Calculate(hardDrives);
+            Assert.AreEqual(result, 2);
+        }
+
+
+        [TestMethod]
+        public void CalculateExampleOneTest()
+        {
+            BacktrackingCalculatorMinDrives calculator = new BacktrackingCalculatorMinDrives();
+            int[] used = { 1, 200, 200, 199, 200, 200 };
+            int[] total = { 1000, 200, 200, 200, 200, 200 };
+            List<HardDrive> hardDrives = BuildHardDrives(used, total);
+            int result = calculator.Calculate(hardDrives);
+            Assert.AreEqual(result, 1);
+        }
+
+        [TestMethod]
+        public void CalculateExampleTwoTest()
+        {
+            BacktrackingCalculatorMinDrives calculator = new BacktrackingCalculatorMinDrives();
+            int[] used = { 750, 800, 850, 900, 950 };
+            int[] total = { 800, 850, 900, 950, 1000 };
+            List<HardDrive> hardDrives = BuildHardDrives(used, total);
+            int result = calculator.Calculate(hardDrives);
+            Assert.AreEqual(result, 5);
+        }
+
+
+
 
         private List<HardDrive> BuildHardDrives(int[] used, int[] total)
         {

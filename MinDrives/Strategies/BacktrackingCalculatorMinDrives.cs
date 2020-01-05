@@ -16,100 +16,82 @@ namespace Strategies
             if (thereIsOnlyHardDrive) return 1;
             else
             {
+                Solution solution = new Solution(hardDrives);
                 HardDriveMarked[] markedHardDrives = BuildMarkedHardDrives(hardDrives);
-                int minHardDrives = hardDrives.Count;
-                for (int position=0;position<markedHardDrives.Length;position++)
+                int maxIterations = hardDrives.Count / 2;
+                for (int amountHardDrives = 1; amountHardDrives < maxIterations; amountHardDrives++)
                 {
-                    List<HardDriveMarked> hardDriveSolution = CheckSolutionByHardDrive(markedHardDrives, position);
-                    if(hardDriveSolution != null && hardDriveSolution.Count>0 )
+                    bool thereIsASolutionWithAmount = solution.HardDrives.Count == amountHardDrives;
+                    if (!thereIsASolutionWithAmount)
                     {
-                        if (hardDriveSolution.Count < minHardDrives)
+                        bool isSolution = IsSolution(markedHardDrives, amountHardDrives, solution);
+                        if (isSolution)
                         {
-                            minHardDrives = hardDriveSolution.Count;
+                            return amountHardDrives;
                         }
                     }
                 }
-                return minHardDrives;
+                return solution.HardDrives.Count;
             }
-            
         }
 
-        private List<HardDriveMarked> CheckSolutionByHardDrive(HardDriveMarked[] hardDrives, int position)
+        private bool IsSolution(HardDriveMarked[] hardDrives, int amountHardDrives, Solution solution)
         {
-            List<HardDriveMarked> solution = new List<HardDriveMarked>();
-            hardDrives[position].IsMarked = true;
-            for(int i = 0; i < hardDrives.Length; i++)
+
+            for (int hardDrivePosition = 0; hardDrivePosition < hardDrives.Length; hardDrivePosition++)
             {
-                List<HardDriveMarked> partialSolution = GetSolution(position, solution, hardDrives);                
-                if ((solution.Count == 0) || (partialSolution.Count < solution.Count))
-                {
-                    solution = partialSolution;
-                }
-
+                bool isSolution = IsSolutionWithHardDrive(hardDrives, hardDrivePosition, amountHardDrives, solution);
+                if (isSolution) return true;
             }
-            hardDrives[position].IsMarked = false;
-            return solution;
+            return false;
+
         }
 
-        private List<HardDriveMarked> GetSolution(int position, List<HardDriveMarked> partialSolution, HardDriveMarked[] hardDrives)
+        private bool IsSolutionWithHardDrive(HardDriveMarked[] hardDrives, int hardDrivePosition, int amountHardDrives, Solution solution)
         {
-            List<HardDriveMarked> solution = CopySolution(partialSolution);
-            solution.Add(hardDrives[position]);
-            if (solution.Count == hardDrives.Length)
-            {                
-                return solution;
+
+            hardDrives[hardDrivePosition].IsMarked = true;
+            amountHardDrives--;
+            if (amountHardDrives == 0)
+            {
+                bool thereIsASolution = CheckDirectSolution(hardDrives, solution);
+                if (!thereIsASolution)
+                {
+                    bool thereIsAReverseSolution = CheckReverseSolution(hardDrives, solution);
+                }
+                hardDrives[hardDrivePosition].IsMarked = false;
+                return thereIsASolution;
             }
             else
-            {                
-                hardDrives[position].IsMarked = true;
-                if (CheckIsSolution(hardDrives))
-                {
-                    hardDrives[position].IsMarked = false;
-                    return solution;
-                }
-                else
-                {
-                    List<HardDriveMarked> newSolution = new List<HardDriveMarked>();
-                    for (int newPosition= 0; newPosition < hardDrives.Length; newPosition++)
-                    {
-                        
-                        if (hardDrives[newPosition].IsMarked == false)
-                        {
-                            hardDrives[newPosition].IsMarked = true;
-                            List<HardDriveMarked> maybeSolution = GetSolution(newPosition,solution,hardDrives);
-                            if ((newSolution.Count == 0) || (newSolution.Count > maybeSolution.Count))                                 
-                            {
-                                newSolution = maybeSolution;
-                            }
-                            hardDrives[position].IsMarked = false;
-                        }
-
-                    }                    
-                    return newSolution;
-                }                
-            }
-            
-
-        }
-
-        private List<HardDriveMarked> CopySolution(List<HardDriveMarked> solution)
-        {
-            List<HardDriveMarked> newSolution = new List<HardDriveMarked>();
-            foreach(HardDriveMarked hardDrive in solution)
             {
-                newSolution.Add(hardDrive);
+                for (int nextPosition = hardDrivePosition + 1; nextPosition < hardDrives.Length; nextPosition++)
+                {
+                    bool isSolution = IsSolutionWithHardDrive(hardDrives, nextPosition, amountHardDrives, solution);
+                    if (isSolution) return true;
+                }
+                hardDrives[hardDrivePosition].IsMarked = false;
+                return false;
             }
-            return newSolution;
         }
 
-        private bool CheckIsSolution(HardDriveMarked[] hardDrives)
+        private bool CheckDirectSolution(HardDriveMarked[] hardDrives, Solution solution)
+        {
+            return CheckSolution(hardDrives, solution, true);
+        }
+
+        private bool CheckReverseSolution(HardDriveMarked[] hardDrives, Solution solution)
+        {
+            return CheckSolution(hardDrives, solution, false);
+        }
+
+        private bool CheckSolution(HardDriveMarked[] hardDrives, Solution solution, bool checkIsMarked)
         {
             int freeSpace = 0;
             int spaceDataToMove = 0;
             List<HardDrive> hardDrivesSolution = new List<HardDrive>();
             foreach (HardDriveMarked hardDrive in hardDrives)
             {
-                if (hardDrive.IsMarked)
+                if (hardDrive.IsMarked == checkIsMarked)
                 {
                     freeSpace += hardDrive.GetFreeSpace();
                     hardDrivesSolution.Add(hardDrive.HardDrive);
@@ -120,6 +102,12 @@ namespace Strategies
                 }
             }
             bool isSolution = freeSpace >= spaceDataToMove;
+            bool isTheBestSolution = hardDrivesSolution.Count < solution.HardDrives.Count;
+            if (isSolution && isTheBestSolution)
+            {
+                solution.HardDrives.Clear();
+                solution.HardDrives = hardDrivesSolution;
+            }
             return isSolution;
         }
 
@@ -129,14 +117,21 @@ namespace Strategies
             int position = 0;
             hardDrives.ForEach(hardDrive =>
             {
-                markedHardDrives[position] = new HardDriveMarked()
+                if (hardDrive.IsValid())
                 {
-                    HardDrive = hardDrive
-                };
-                position++;
-               
+                    markedHardDrives[position] = new HardDriveMarked()
+                    {
+                        HardDrive = hardDrive
+                    };
+                    position++;
+                }
+                else
+                {
+                    throw new StrategyException("There is an invalid HardDrive");
+                }
             });
             return markedHardDrives;
         }
+
     }
 }
