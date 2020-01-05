@@ -2,7 +2,7 @@
 
 namespace Strategies
 {
-    public class Class1
+    public class BacktrackingCalculatorMinDrives
     {
     }
 }

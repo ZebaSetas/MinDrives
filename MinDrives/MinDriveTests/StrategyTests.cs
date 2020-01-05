@@ -1,14 +1,25 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Strategies;
 
 namespace MinDriveTests
 {
     [TestClass]
-    public class UnitTest1
+    public class StrategyTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void CreateEmptyStrategyTest()
         {
+            BacktrackingCalculatorMinDrives calculator = new BacktrackingCalculatorMinDrives();
+            Assert.AreNotEqual(calculator, null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(StrategyException))]
+        public void CalculateWithNullListTest()
+        {
+            BacktrackingCalculatorMinDrives calculator = new BacktrackingCalculatorMinDrives();
+            int result = calculator.Calculate(null);
         }
     }
 }
