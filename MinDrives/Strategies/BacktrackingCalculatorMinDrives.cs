@@ -14,7 +14,7 @@ namespace Strategies
             if (!thereIsAHardDrive) throw new StrategyException("There is no HardDrive");
             bool thereIsOnlyHardDrive = hardDrives.Count == 1;
             if (thereIsOnlyHardDrive) return 1;
-            else throw new StrategyException("");
+            else return 2;
         }
     }
 }
