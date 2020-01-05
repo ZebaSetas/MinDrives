@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="HardDriveTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="HardDriveMarkedTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
