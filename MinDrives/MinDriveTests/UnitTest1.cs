@@ -4,11 +4,14 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace MinDriveTests
 {
     [TestClass]
-    public class UnitTest1
+    public class HardDriveTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void CreateEmptyEntityTest()
         {
+            HardDrive hardrive = new HardDrive();
+            Assert.AreEqual(hardrive.MaxSpace, 0);
+            Assert.AreEqual(hardrive.UsedSpace, 0);
         }
     }
 }
