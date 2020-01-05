@@ -62,6 +62,10 @@
       <Project>{d7363de2-9c5b-4c52-85dd-e2a7aadb5454}</Project>
       <Name>Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Strategies.Interface\Strategies.Interface.csproj">
+      <Project>{fe770b9d-2f60-4570-af63-3fbaa49cf5b0}</Project>
+      <Name>Strategies.Interface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Strategies\Strategies.csproj">
       <Project>{80279673-82c0-4d98-acfa-f18dd9dca9df}</Project>
       <Name>Strategies</Name>

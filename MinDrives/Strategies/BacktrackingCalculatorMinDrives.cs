@@ -10,7 +10,9 @@ namespace Strategies
 
         public int Calculate(List<HardDrive> hardDrives)
         {
-            throw new StrategyException("Hola mundo");
+            bool thereIsAHardDrive = hardDrives != null && hardDrives.Count > 0;
+            if (!thereIsAHardDrive) throw new StrategyException("There is no HardDrive");
+            else throw new StrategyException("");
         }
     }
 }
