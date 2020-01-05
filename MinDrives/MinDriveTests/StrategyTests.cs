@@ -59,6 +59,17 @@ namespace MinDriveTests
             Assert.AreEqual(result, 2);
         }
 
+        [TestMethod]
+        public void CalculateWithTwoHardDriveSecondTest()
+        {
+            BacktrackingCalculatorMinDrives calculator = new BacktrackingCalculatorMinDrives();
+            int[] used = { 1, 1 };
+            int[] total = { 10, 10 };
+            List<HardDrive> hardDrives = BuildHardDrives(used, total);
+            int result = calculator.Calculate(hardDrives);
+            Assert.AreEqual(result, 1);
+        }
+
         private List<HardDrive> BuildHardDrives(int[] used, int[] total)
         {
             List<HardDrive> hardDrives = new List<HardDrive>();
