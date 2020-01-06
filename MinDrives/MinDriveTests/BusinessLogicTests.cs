@@ -9,9 +9,11 @@ namespace MinDriveTests
     public class BusinessLogicTests
     {
         [TestMethod]
+        [ExpectedException(typeof(BusinessLogicException))]
         public void CalculateWithNullListTest()
         {
-            ICalculatorLogic logic = new CalculatorLogic();
+            ICalculatorLogic controller = new CalculatorLogic();
+            controller.Calculate(null, null);
         }
     }
 }

@@ -2,7 +2,8 @@
 
 namespace BusinessLogic.Interface
 {
-    public class Class1
+    public interface ICalculatorLogic
     {
+        void Calculate(object p1, object p2);
     }
 }

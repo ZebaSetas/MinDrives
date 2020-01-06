@@ -54,11 +54,20 @@
     <Compile Include="HardDriveMarkedTests.cs" />
     <Compile Include="StrategyTests.cs" />
     <Compile Include="GreyconExampleTests.cs" />
+    <Compile Include="BusinessLogicTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BusinessLogic.Interface\BusinessLogic.Interface.csproj">
+      <Project>{8B6F9DE8-E94F-4562-8AC4-49FFDD5E2E91}</Project>
+      <Name>BusinessLogic.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
+      <Project>{D69C50E2-4009-461F-BC4A-C2CD74E75613}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{d7363de2-9c5b-4c52-85dd-e2a7aadb5454}</Project>
       <Name>Domain</Name>
