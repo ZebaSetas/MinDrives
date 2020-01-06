@@ -7,7 +7,6 @@
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogic.Interface\BusinessLogic.Interface.csproj" />
     <ProjectReference Include="..\Strategies.Interface\Strategies.Interface.csproj" />
-    <ProjectReference Include="..\Strategies\Strategies.csproj" />
   </ItemGroup>
 
 </Project>

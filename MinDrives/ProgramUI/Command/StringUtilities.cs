@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProgramUI.Command
 {
-    public static class StringUtils
+    public static class StringUtilities
     {
         public static int[] StringToIntArray(string value)
         {

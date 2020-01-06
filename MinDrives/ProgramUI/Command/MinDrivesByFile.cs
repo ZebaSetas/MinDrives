@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using System.IO;
 using BusinessLogic.Interface;
 using ConsoleManager;
+using Strategies.Interface;
 
 namespace ProgramUI.Command
 {
     internal class MinDrivesByFile : CommandReader
     {
         private ICalculatorLogic calculatorLogic;
+        private IStrategy strategy;
         private bool pathOfFileWasRequested = false;
         private string path;
         private string result = "";
         private string errorMessage;
-        private List<int> results = new List<int>();
-        public MinDrivesByFile(ICalculatorLogic calculatorLogic)
+        
+        public MinDrivesByFile(ICalculatorLogic calculatorLogic, Strategies.Interface.IStrategy strategy)
         {
             this.calculatorLogic = calculatorLogic;
+            this.strategy = strategy;
         }
 
         public override void AskNextCommand()
@@ -52,7 +55,7 @@ namespace ProgramUI.Command
                         result += "Line " + i + ">> used array: " + arrays[i]+"\n";
                         try
                         {
-                            used = StringUtils.StringToIntArray(arrays[i]);
+                            used = StringUtilities.StringToIntArray(arrays[i]);
                         }
                         catch (CommandException e)
                         {
@@ -65,7 +68,7 @@ namespace ProgramUI.Command
                         result += "Line " + i + ">> total array: " + arrays[i] + "\n";
                         try
                         {
-                            total = StringUtils.StringToIntArray(arrays[i]);
+                            total = StringUtilities.StringToIntArray(arrays[i]);
                         }
                         catch (CommandException e)
                         {
@@ -77,7 +80,7 @@ namespace ProgramUI.Command
                     {
                         try
                         {
-                            int partialResult = calculatorLogic.MinDrives(used, total);
+                            int partialResult = calculatorLogic.MinDrives(used, total, strategy);
                             result += "For lines " + (i - 2) + " and " + (i - 1) + " the result is " + partialResult+"\n";  
 
                         }

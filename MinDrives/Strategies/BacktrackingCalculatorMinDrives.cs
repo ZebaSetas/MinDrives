@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace Strategies
 {
-    public class BacktrackingCalculatorMinDrives:StrategyThemplate
+    public class BacktrackingCalculatorMinDrives:IStrategy
     {
-        public override int CalculateMinDrives(List<HardDrive> hardDrives)
+        public int CalculateMinDrives(List<HardDrive> hardDrives)
         {
             //sorted by minimum space used, because it avoid entries in the stack            
             bool thereIsAHardDrive = hardDrives != null && hardDrives.Count > 0;

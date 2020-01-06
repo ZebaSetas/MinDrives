@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleManager;
+using ProgramUI.Reflection;
+using BusinessLogic.Interface;
+using Strategies.Interface;
 
 namespace ProgramUI
 {
@@ -12,9 +15,19 @@ namespace ProgramUI
     {
         static void Main(string[] args)
         {
-            CommandFactory commandFactory = new CommandFactoryImpl();
-            CommandThemplate commandThemplate = new CommandThemplateImpl(commandFactory);
-            commandThemplate.Execute();
+            try
+            {
+                ICalculatorLogic calculatorLogic = ReflectionDependencyUtilities.GetCalculatorLogicDependency();
+                IStrategy strategyCalculator = ReflectionDependencyUtilities.GetStrategyDependency();
+                CommandFactory commandFactory = new CommandFactoryImpl(calculatorLogic, strategyCalculator);
+                CommandThemplate commandThemplate = new CommandThemplateImpl(commandFactory);
+                commandThemplate.Execute();
+            }
+            catch(ReflectionException e)
+            {
+                Console.WriteLine(e.StackTrace);
+                Console.ReadLine();
+            }
         }
     }
 }

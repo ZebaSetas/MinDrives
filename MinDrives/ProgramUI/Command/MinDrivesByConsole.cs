@@ -1,5 +1,6 @@
 ﻿using BusinessLogic.Interface;
 using ConsoleManager;
+using Strategies.Interface;
 using System;
 
 namespace ProgramUI.Command
@@ -7,6 +8,7 @@ namespace ProgramUI.Command
     internal class MinDrivesByConsole : CommandReader
     {
         private ICalculatorLogic calculatorLogic;
+        private IStrategy strategy;
         private int result;
         private string errorMessage = null;
         private bool usedArrayWasRequested = false;
@@ -14,9 +16,11 @@ namespace ProgramUI.Command
         private int [] used;
         private int[] total;
 
-        public MinDrivesByConsole(ICalculatorLogic calculatorLogic)
+        public MinDrivesByConsole(ICalculatorLogic calculatorLogic, IStrategy strategy)
         {
             this.calculatorLogic = calculatorLogic;
+            this.strategy = strategy;
+
         }
 
         public override void AskNextCommand()
@@ -37,7 +41,7 @@ namespace ProgramUI.Command
             {
                 Console.WriteLine("Enter used space array (example: {1,1}): ");
                 command = Console.ReadLine();
-                used = StringUtils.StringToIntArray(command);
+                used = StringUtilities.StringToIntArray(command);
                 usedArrayWasRequested = true;
             }
         }
@@ -49,7 +53,7 @@ namespace ProgramUI.Command
             {
                 Console.WriteLine("Enter total space array (example: {2,2}): ");
                 command = Console.ReadLine();
-                total = StringUtils.StringToIntArray(command);
+                total = StringUtilities.StringToIntArray(command);
                 totalArrayRequested = true;
             }
         }
@@ -58,7 +62,7 @@ namespace ProgramUI.Command
         {
             try
             {
-                result = calculatorLogic.MinDrives(used, total);
+                result = calculatorLogic.MinDrives(used, total,strategy);
             }
             catch(BusinessLogicException e)
             {              
