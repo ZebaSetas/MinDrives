@@ -54,5 +54,19 @@ namespace MinDriveTests
             ICalculatorLogic controller = new CalculatorLogic();
             controller.MinDrives(used, total);
         }
+
+        [TestMethod]
+        public void CalculateWithTwoHardDriveFirstTest()
+        {
+            int[] used = { 9, 9 };
+            int[] total = { 10, 10 };
+            ICalculatorLogic controller = new CalculatorLogic();
+            int result = controller.MinDrives(used, total);
+            Assert.AreEqual(result, 2);
+        }
+
+
+
+
     }
 }
