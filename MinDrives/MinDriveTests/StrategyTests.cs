@@ -22,7 +22,7 @@ namespace MinDriveTests
         public void CalculateWithNullListTest()
         {
             BacktrackingCalculatorMinDrives calculator = new BacktrackingCalculatorMinDrives();
-            int result = calculator.Calculate(null);
+            int result = calculator.CalculateMinDrives(null);
         }
 
         [TestMethod]
@@ -30,7 +30,7 @@ namespace MinDriveTests
         public void CalculateWithEmptyListTest()
         {
             BacktrackingCalculatorMinDrives calculator = new BacktrackingCalculatorMinDrives();
-            int result = calculator.Calculate(new List<HardDrive>());
+            int result = calculator.CalculateMinDrives(new List<HardDrive>());
         }
 
         [TestMethod]
@@ -44,7 +44,7 @@ namespace MinDriveTests
             };
             List<HardDrive> hardDrives = new List<HardDrive>();
             hardDrives.Add(hardrive);
-            int result = calculator.Calculate(hardDrives);
+            int result = calculator.CalculateMinDrives(hardDrives);
             Assert.AreEqual(result, 1);
         }
 
@@ -60,7 +60,7 @@ namespace MinDriveTests
             };
             List<HardDrive> hardDrives = new List<HardDrive>();
             hardDrives.Add(hardrive);
-            int result = calculator.Calculate(hardDrives);
+            int result = calculator.CalculateMinDrives(hardDrives);
             Assert.AreEqual(result, 1);
         }
 
@@ -72,7 +72,7 @@ namespace MinDriveTests
             int[] used = { 10, 10, 10, 10, 10, 10, 12, 10, 10, 10 };
             int[] total = { 11, 11, 11, 11, 11, 11, 11, 11, 11, 11 };
             List<HardDrive> hardDrives = BuildHardDrives(used, total);
-            int result = calculator.Calculate(hardDrives);
+            int result = calculator.CalculateMinDrives(hardDrives);
             Assert.AreEqual(result, 10);
         }
 
@@ -83,7 +83,7 @@ namespace MinDriveTests
             int[] used = { 9, 9 };
             int[] total = { 10, 10 };
             List<HardDrive> hardDrives = BuildHardDrives(used, total);
-            int result = calculator.Calculate(hardDrives);
+            int result = calculator.CalculateMinDrives(hardDrives);
             Assert.AreEqual(result, 2);
         }
 
@@ -94,7 +94,7 @@ namespace MinDriveTests
             int[] used = { 1, 1 };
             int[] total = { 10, 10 };
             List<HardDrive> hardDrives = BuildHardDrives(used, total);
-            int result = calculator.Calculate(hardDrives);
+            int result = calculator.CalculateMinDrives(hardDrives);
             Assert.AreEqual(result, 1);
         }
 
@@ -105,7 +105,7 @@ namespace MinDriveTests
             int[] used = { 9, 1 };
             int[] total = { 10, 10 };
             List<HardDrive> hardDrives = BuildHardDrives(used, total);
-            int result = calculator.Calculate(hardDrives);
+            int result = calculator.CalculateMinDrives(hardDrives);
             Assert.AreEqual(result, 1);
         }
 
@@ -116,7 +116,7 @@ namespace MinDriveTests
             int[] used = { 1, 9 };
             int[] total = { 10, 10 };
             List<HardDrive> hardDrives = BuildHardDrives(used, total);
-            int result = calculator.Calculate(hardDrives);
+            int result = calculator.CalculateMinDrives(hardDrives);
             Assert.AreEqual(result, 1);
         }
 
@@ -127,7 +127,7 @@ namespace MinDriveTests
             int[] used = { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 };
             int[] total = { 11, 11, 11, 11, 11, 11, 11, 11, 11, 11 };
             List<HardDrive> hardDrives = BuildHardDrives(used, total);
-            int result = calculator.Calculate(hardDrives);
+            int result = calculator.CalculateMinDrives(hardDrives);
             Assert.AreEqual(result, 10);
         }
 
@@ -138,7 +138,7 @@ namespace MinDriveTests
             int[] used = { 9, 9, 9, 9, 9, 9, 9, 9, 9, 9 };
             int[] total = { 11, 11, 11, 11, 11, 11, 11, 11, 11, 11 };
             List<HardDrive> hardDrives = BuildHardDrives(used, total);
-            int result = calculator.Calculate(hardDrives);
+            int result = calculator.CalculateMinDrives(hardDrives);
             Assert.AreEqual(result, 9);
         }
 
@@ -150,7 +150,7 @@ namespace MinDriveTests
             int[] used = { 300, 525, 110 };
             int[] total = { 350, 600, 115 };
             List<HardDrive> hardDrives = BuildHardDrives(used, total);
-            int result = calculator.Calculate(hardDrives);
+            int result = calculator.CalculateMinDrives(hardDrives);
             Assert.AreEqual(result, 2);
         }
        
@@ -162,7 +162,7 @@ namespace MinDriveTests
             int[] useda = { 50, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49 };
             int[] total = { 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50 };
             List<HardDrive> hardDrives = BuildHardDrives(useda, total);
-            int result = calculator.Calculate(hardDrives);
+            int result = calculator.CalculateMinDrives(hardDrives);
             Assert.AreEqual(hardDrives.Count, 50);
             Assert.AreEqual(result, 50);
         }
@@ -174,7 +174,7 @@ namespace MinDriveTests
             int[] used = { 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 50 };
             int[] total = { 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50 };
             List<HardDrive> hardDrives = BuildHardDrives(used, total);
-            int result = calculator.Calculate(hardDrives);
+            int result = calculator.CalculateMinDrives(hardDrives);
             Assert.AreEqual(hardDrives.Count, 50);
             Assert.AreEqual(result, 50);
         }

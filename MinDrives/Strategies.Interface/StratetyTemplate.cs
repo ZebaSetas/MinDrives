@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Strategies.Interface
 {
-    public abstract class CalculatorMinDrives
+    public abstract class StrategyThemplate
     {
-        public abstract int Calculate(List<HardDrive> hardDrives);
+        public abstract int CalculateMinDrives(List<HardDrive> hardDrives);
     }
 }

@@ -5,10 +5,9 @@ using System.Collections.Generic;
 
 namespace Strategies
 {
-    public class BacktrackingCalculatorMinDrives
+    public class BacktrackingCalculatorMinDrives:StrategyThemplate
     {
-
-        public int Calculate(List<HardDrive> hardDrives)
+        public override int CalculateMinDrives(List<HardDrive> hardDrives)
         {
             //sorted by minimum space used, because it avoid entries in the stack            
             bool thereIsAHardDrive = hardDrives != null && hardDrives.Count > 0;
@@ -19,15 +18,16 @@ namespace Strategies
             else
             {
                 hardDrives.Sort();
-                
+
                 bool isThereAnOptimalSolution = CheckOptimalSolution(markedHardDrives);
                 if (isThereAnOptimalSolution) return 1;
                 else
                 {
                     return FindNoOptimalSolution(markedHardDrives);
-                }               
+                }
             }
         }
+
 
         private int FindNoOptimalSolution(HardDriveMarked[] markedHardDrives)
         {
@@ -136,5 +136,6 @@ namespace Strategies
             return markedHardDrives;
         }
 
+        
     }
 }

@@ -1,5 +1,7 @@
 ﻿using BusinessLogic.Interface;
 using Domain;
+using Strategies;
+using Strategies.Interface;
 using System;
 using System.Collections.Generic;
 
@@ -9,9 +11,14 @@ namespace BusinessLogic
     {
         public int MinDrives(int[]used, int[]total)
         {
-            ThrowExceptionIfListAreInvalid(used,total);
+            ThrowExceptionIfListAreInvalid(used,total);            
+            return MinDrives(used,total, new BacktrackingCalculatorMinDrives());
+        }
+
+        public int MinDrives(int[] used, int[] total, StrategyThemplate strategy)
+        {
             List<HardDrive> hardDrives = BuildHardDrives(used, total);
-            return 0;
+            return strategy.CalculateMinDrives(hardDrives);
         }
 
         private void ThrowExceptionIfListAreInvalid(int[] used, int[] total)
