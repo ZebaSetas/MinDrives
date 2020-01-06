@@ -16,7 +16,8 @@ namespace MinDriveTests
         {
             ICalculatorLogic controller = new CalculatorLogic();
             IStrategy strategy = new BacktrackingCalculatorMinDrives();
-            controller.MinDrives(null, null, strategy);
+            controller.SetStrategy(strategy);
+            controller.MinDrives(null, null);
         }
 
         [TestMethod]
@@ -25,8 +26,9 @@ namespace MinDriveTests
         {
             ICalculatorLogic controller = new CalculatorLogic();
             IStrategy strategy = new BacktrackingCalculatorMinDrives();
+            controller.SetStrategy(strategy);
             int[] total = { 4, 5 };
-            controller.MinDrives(null,total,strategy);
+            controller.MinDrives(null,total);
         }
 
         [TestMethod]
@@ -35,8 +37,9 @@ namespace MinDriveTests
         {
             ICalculatorLogic controller = new CalculatorLogic();
             IStrategy strategy = new BacktrackingCalculatorMinDrives();
+            controller.SetStrategy(strategy);
             int[] used = { 4, 5 };
-            controller.MinDrives(used,null,strategy);
+            controller.MinDrives(used,null);
         }
 
         [TestMethod]
@@ -47,7 +50,8 @@ namespace MinDriveTests
             int[] total = {10};
             ICalculatorLogic controller = new CalculatorLogic();
             IStrategy strategy = new BacktrackingCalculatorMinDrives();
-            controller.MinDrives(used, total,strategy);
+            controller.SetStrategy(strategy);
+            controller.MinDrives(used, total);
         }
 
         [TestMethod]
@@ -59,7 +63,8 @@ namespace MinDriveTests
             int[] total = { 11, 11, 11, 11, 11, 11, 11, 11, 11, 11 };
             ICalculatorLogic controller = new CalculatorLogic();
             IStrategy strategy = new BacktrackingCalculatorMinDrives();
-            controller.MinDrives(used, total,strategy);
+            controller.SetStrategy(strategy);
+            controller.MinDrives(used, total);
         }
 
         [TestMethod]
@@ -69,11 +74,10 @@ namespace MinDriveTests
             int[] total = { 10, 10 };
             ICalculatorLogic controller = new CalculatorLogic();
             IStrategy strategy = new BacktrackingCalculatorMinDrives();
-            int result = controller.MinDrives(used, total,strategy);
+            controller.SetStrategy(strategy);
+            int result = controller.MinDrives(used, total);
             Assert.AreEqual(result, 2);
         }
-
-
 
 
     }

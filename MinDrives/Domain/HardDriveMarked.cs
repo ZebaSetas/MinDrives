@@ -24,11 +24,5 @@ namespace Domain
             return HardDrive.UsedSpace;
         }
 
-        public void AddData(int amountData)
-        {
-            HardDrive.AddData(amountData);
-        }
-
-
     }
 }

@@ -17,15 +17,7 @@ namespace Domain
         {
             return MaxSpace - UsedSpace;
         }
-
-        public void AddData(int amountData)
-        {
-            int newUsedSpace = UsedSpace + amountData;
-            bool spaceWasExceeded = newUsedSpace > MaxSpace;
-            if (!spaceWasExceeded) UsedSpace = newUsedSpace;
-            else throw new DomainException("Quantity was exceeded");
-        }
-
+                
         public override bool Equals(object otherHardDrive)
         {
             HardDrive other = (HardDrive) otherHardDrive;

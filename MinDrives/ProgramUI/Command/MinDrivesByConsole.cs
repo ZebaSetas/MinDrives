@@ -7,8 +7,7 @@ namespace ProgramUI.Command
 {
     internal class MinDrivesByConsole : CommandReader
     {
-        private ICalculatorLogic calculatorLogic;
-        private IStrategy strategy;
+        private ICalculatorLogic calculatorLogic;        
         private int result;
         private string errorMessage = null;
         private bool usedArrayWasRequested = false;
@@ -16,11 +15,9 @@ namespace ProgramUI.Command
         private int [] used;
         private int[] total;
 
-        public MinDrivesByConsole(ICalculatorLogic calculatorLogic, IStrategy strategy)
+        public MinDrivesByConsole(ICalculatorLogic calculatorLogic)
         {
             this.calculatorLogic = calculatorLogic;
-            this.strategy = strategy;
-
         }
 
         public override void AskNextCommand()
@@ -62,7 +59,7 @@ namespace ProgramUI.Command
         {
             try
             {
-                result = calculatorLogic.MinDrives(used, total,strategy);
+                result = calculatorLogic.MinDrives(used, total);
             }
             catch(BusinessLogicException e)
             {              

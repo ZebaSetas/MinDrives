@@ -11,7 +11,7 @@ namespace ProgramUI.Reflection
     public static class ReflectionDependencyUtilities
     {       
 
-        public static ICalculatorLogic GetCalculatorLogicDependency()
+        public static ICalculatorLogic GetCalculatorLogic()
         {
             try
             {
@@ -30,7 +30,7 @@ namespace ProgramUI.Reflection
             }            
         }
 
-        internal static IStrategy GetStrategyDependency()
+        internal static IStrategy GetStrategy()
         {
             try
             {

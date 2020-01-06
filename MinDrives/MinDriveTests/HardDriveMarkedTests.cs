@@ -53,18 +53,7 @@ namespace MinDriveTests
             };
             Assert.AreEqual(hardrive.IsValid(), false);
         }
-
-        [TestMethod]
-        [ExpectedException(typeof(DomainException))]
-        public void ExceededAddDataTest()
-        {
-            HardDrive hardrive = new HardDrive()
-            {
-                MaxSpace = 10,
-                UsedSpace = 9
-            };
-            hardrive.AddData(2);
-        }
+               
 
     }
 }

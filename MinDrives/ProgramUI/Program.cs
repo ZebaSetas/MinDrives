@@ -17,9 +17,10 @@ namespace ProgramUI
         {
             try
             {
-                ICalculatorLogic calculatorLogic = ReflectionDependencyUtilities.GetCalculatorLogicDependency();
-                IStrategy strategyCalculator = ReflectionDependencyUtilities.GetStrategyDependency();
-                CommandFactory commandFactory = new CommandFactoryImpl(calculatorLogic, strategyCalculator);
+                ICalculatorLogic calculatorLogic = ReflectionDependencyUtilities.GetCalculatorLogic();
+                IStrategy strategyCalculator = ReflectionDependencyUtilities.GetStrategy();
+                calculatorLogic.SetStrategy(strategyCalculator);
+                CommandFactory commandFactory = new CommandFactoryImpl(calculatorLogic);
                 CommandThemplate commandThemplate = new CommandThemplateImpl(commandFactory);
                 commandThemplate.Execute();
             }

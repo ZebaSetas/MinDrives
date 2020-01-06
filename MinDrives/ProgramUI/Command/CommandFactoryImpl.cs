@@ -15,19 +15,17 @@ namespace ProgramUI.Command
     {
 
         private ICalculatorLogic calculatorLogic;
-        private IStrategy strategy;
 
-        public CommandFactoryImpl(ICalculatorLogic calculatorLogic, IStrategy strategy)
+        public CommandFactoryImpl(ICalculatorLogic calculatorLogic)
         {
-            this.calculatorLogic = calculatorLogic;
-            this.strategy = strategy;
+            this.calculatorLogic = calculatorLogic;            
         }
 
         public CommandReader BuildCommand(string[] args)
         {
             if (args.Length != 1) throw new CommandException("Invalid number of arguments");
-            if (args[0] == "1") return new MinDrivesByConsole(calculatorLogic,strategy);
-            if (args[0] == "2") return new MinDrivesByFile(calculatorLogic,strategy);
+            if (args[0] == "1") return new MinDrivesByConsole(calculatorLogic);
+            if (args[0] == "2") return new MinDrivesByFile(calculatorLogic);
             else throw new CommandException("Invalid command");
         }
     }

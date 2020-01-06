@@ -5,6 +5,7 @@ namespace BusinessLogic.Interface
 {
     public interface ICalculatorLogic
     {
-        int MinDrives(int[] used, int[] total, IStrategy strategy);        
+        int MinDrives(int[] used, int[] total);
+        void SetStrategy(IStrategy strategy);
     }
 }

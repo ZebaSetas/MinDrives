@@ -9,16 +9,19 @@ namespace BusinessLogic
 {
     public class CalculatorLogic : ICalculatorLogic
     {
-       /* public int MinDrives(int[]used, int[]total)
-        {
-            ThrowExceptionIfListAreInvalid(used,total);            
-            return MinDrives(used,total, new BacktrackingCalculatorMinDrives());
-        }*/
 
-        public int MinDrives(int[] used, int[] total, IStrategy strategy)
+        private IStrategy strategy;
+
+        public int MinDrives(int[] used, int[] total)
         {
-           List<HardDrive> hardDrives = BuildHardDrives(used, total);            
+            ThrowExceptionIfListAreInvalid(used, total);
+            List<HardDrive> hardDrives = BuildHardDrives(used, total);            
             return strategy.CalculateMinDrives(hardDrives);
+        }
+
+        public void SetStrategy(IStrategy strategy)
+        {
+            this.strategy = strategy;
         }
 
         private void ThrowExceptionIfListAreInvalid(int[] used, int[] total)

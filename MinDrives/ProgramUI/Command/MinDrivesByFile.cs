@@ -10,16 +10,14 @@ namespace ProgramUI.Command
     internal class MinDrivesByFile : CommandReader
     {
         private ICalculatorLogic calculatorLogic;
-        private IStrategy strategy;
         private bool pathOfFileWasRequested = false;
         private string path;
         private string result = "";
         private string errorMessage;
         
-        public MinDrivesByFile(ICalculatorLogic calculatorLogic, Strategies.Interface.IStrategy strategy)
+        public MinDrivesByFile(ICalculatorLogic calculatorLogic)
         {
             this.calculatorLogic = calculatorLogic;
-            this.strategy = strategy;
         }
 
         public override void AskNextCommand()
@@ -80,7 +78,7 @@ namespace ProgramUI.Command
                     {
                         try
                         {
-                            int partialResult = calculatorLogic.MinDrives(used, total, strategy);
+                            int partialResult = calculatorLogic.MinDrives(used, total);
                             result += "For lines " + (i - 2) + " and " + (i - 1) + " the result is " + partialResult+"\n";  
 
                         }
