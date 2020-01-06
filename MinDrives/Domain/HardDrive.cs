@@ -2,7 +2,7 @@
 
 namespace Domain
 {
-    public class HardDrive
+    public class HardDrive:IComparable
     {
         public int Id { get; set; }
         public int MaxSpace { get; set; }
@@ -32,6 +32,11 @@ namespace Domain
             return this.Id == other.Id;
         }
 
+        public int CompareTo(object otherHardDrive)
+        {
+            HardDrive other = (HardDrive)otherHardDrive;
+            return this.UsedSpace.CompareTo(other.UsedSpace);
+        }
     }
 
    
