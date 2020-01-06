@@ -13,7 +13,25 @@ namespace MinDriveTests
         public void CalculateWithNullListTest()
         {
             ICalculatorLogic controller = new CalculatorLogic();
-            controller.Calculate(null, null);
+            controller.MinDrives(null, null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(BusinessLogicException))]
+        public void CalculateWithNullFirstListTest()
+        {
+            ICalculatorLogic controller = new CalculatorLogic();
+            int[] total = { 4, 5 };
+            controller.MinDrives(null,total);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(BusinessLogicException))]
+        public void CalculateWithNullSecondListTest()
+        {
+            ICalculatorLogic controller = new CalculatorLogic();
+            int[] used = { 4, 5 };
+            controller.MinDrives(used,null);
         }
     }
 }

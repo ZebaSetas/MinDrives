@@ -5,7 +5,7 @@ namespace BusinessLogic
 {
     public class CalculatorLogic : ICalculatorLogic
     {
-        public void Calculate(object p1, object p2)
+        public int MinDrives(int[]used, int[]total)
         {
             throw new BusinessLogicException("");
         }
