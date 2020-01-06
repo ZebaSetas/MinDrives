@@ -50,7 +50,7 @@ namespace MinDriveTests
 
         [TestMethod]
         [ExpectedException(typeof(StrategyException))]
-        public void CalculateWithOneInvalidHarDrive()
+        public void CalculateWithOneInvalidHarDriveTest()
         {
             BacktrackingCalculatorMinDrives calculator = new BacktrackingCalculatorMinDrives();
             HardDrive hardrive = new HardDrive()
@@ -62,6 +62,18 @@ namespace MinDriveTests
             hardDrives.Add(hardrive);
             int result = calculator.Calculate(hardDrives);
             Assert.AreEqual(result, 1);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(StrategyException))]
+        public void CalculateWithInvalidHarDriveTwoTest()
+        {
+                        BacktrackingCalculatorMinDrives calculator = new BacktrackingCalculatorMinDrives();
+            int[] used = { 10, 10, 10, 10, 10, 10, 12, 10, 10, 10 };
+            int[] total = { 11, 11, 11, 11, 11, 11, 11, 11, 11, 11 };
+            List<HardDrive> hardDrives = BuildHardDrives(used, total);
+            int result = calculator.Calculate(hardDrives);
+            Assert.AreEqual(result, 10);
         }
 
         [TestMethod]
