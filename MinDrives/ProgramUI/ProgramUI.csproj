@@ -43,11 +43,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command\CommandFactoryImpl.cs" />
+    <Compile Include="Command\CommandThemplateImpl.cs" />
+    <Compile Include="Command\MinDrivesByConsole.cs" />
+    <Compile Include="Command\MinDrivesByFile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogic.Interface\BusinessLogic.Interface.csproj">
+      <Project>{8b6f9de8-e94f-4562-8ac4-49ffdd5e2e91}</Project>
+      <Name>BusinessLogic.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
+      <Project>{d69c50e2-4009-461f-bc4a-c2cd74e75613}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConsoleManager\ConsoleManager.csproj">
+      <Project>{989c5828-04d1-41f4-8081-864dd9a7b666}</Project>
+      <Name>ConsoleManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

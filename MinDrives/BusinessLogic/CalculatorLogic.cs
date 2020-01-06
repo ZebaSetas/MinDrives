@@ -17,7 +17,7 @@ namespace BusinessLogic
 
         public int MinDrives(int[] used, int[] total, StrategyThemplate strategy)
         {
-            List<HardDrive> hardDrives = BuildHardDrives(used, total);
+           List<HardDrive> hardDrives = BuildHardDrives(used, total);            
             return strategy.CalculateMinDrives(hardDrives);
         }
 
@@ -40,8 +40,12 @@ namespace BusinessLogic
                     UsedSpace = used[i],
                     MaxSpace = total[i],
                     Id = nextId
-                };
-                if(!hardDrive.IsValid()) throw new BusinessLogicException("Error! HardDrive with "+ used[i]+ " for used value and " + total[i] +" for total value is not valid");
+                };                      
+                if (!hardDrive.IsValid())                
+                    throw new BusinessLogicException("Error! HardDrive with " + used[i] + 
+                                                     " for used value and " + total[i] + 
+                                                     " for total value is not valid");
+                
                 hardDrives.Add(hardDrive);
                 nextId++;
             }

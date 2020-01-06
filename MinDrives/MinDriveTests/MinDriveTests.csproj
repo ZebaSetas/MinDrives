@@ -55,6 +55,7 @@
     <Compile Include="StrategyTests.cs" />
     <Compile Include="GreyconExampleTests.cs" />
     <Compile Include="BusinessLogicTests.cs" />
+    <Compile Include="ConsoleManagerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
