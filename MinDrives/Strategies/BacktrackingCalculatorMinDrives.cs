@@ -55,12 +55,13 @@ namespace Strategies
                 if (isTheBestSolutionNoOptimal) return 2;
                 else
                 {
-                    for (int nextPosition = 0; nextPosition < hardDrives.Length; nextPosition++)
+                    for (int nextPosition = hardDrivePosition+1; nextPosition < hardDrives.Length; nextPosition++)
                     {
                         bool positionIsNotMarked = !hardDrives[nextPosition].IsMarked;
-                        bool positionIsNotCurrentHardDrive = hardDrivePosition != nextPosition;
-                        bool isValidPosition = positionIsNotMarked && positionIsNotCurrentHardDrive;
-                        if (isValidPosition)
+                        //  bool positionIsNotCurrentHardDrive = hardDrivePosition != nextPosition;
+                        //  bool isValidPosition = positionIsNotMarked && positionIsNotCurrentHardDrive;
+                        //if (isValidPosition)
+                        if (positionIsNotMarked)
                         {
                             int newSolution = FindNoOptimalSolution(hardDrives, nextPosition, solution);
                             if (newSolution < minSolution)

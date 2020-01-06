@@ -92,7 +92,7 @@ namespace MinDriveTests
             Assert.AreEqual(result, 1);
         }
 
-        [TestMethod]
+       [TestMethod]
         public void CalculateTenHardDriveTest()
         {
             BacktrackingCalculatorMinDrives calculator = new BacktrackingCalculatorMinDrives();
@@ -127,40 +127,7 @@ namespace MinDriveTests
         }
 
 
-        [TestMethod]
-        public void CalculateExampleOneTest()
-        {
-            BacktrackingCalculatorMinDrives calculator = new BacktrackingCalculatorMinDrives();
-            int[] used = { 1, 200, 200, 199, 200, 200 };
-            int[] total = { 1000, 200, 200, 200, 200, 200 };
-            List<HardDrive> hardDrives = BuildHardDrives(used, total);
-            int result = calculator.Calculate(hardDrives);
-            Assert.AreEqual(result, 1);
-        }
-
-        [TestMethod]
-        public void CalculateExampleTwoTest()
-        {
-            BacktrackingCalculatorMinDrives calculator = new BacktrackingCalculatorMinDrives();
-            int[] used = { 750, 800, 850, 900, 950 };
-            int[] total = { 800, 850, 900, 950, 1000 };
-            List<HardDrive> hardDrives = BuildHardDrives(used, total);
-            int result = calculator.Calculate(hardDrives);
-            Assert.AreEqual(result, 5);
-        }
-
-        [TestMethod]
-        public void CalculateExampleThreeTest()
-        {
-            BacktrackingCalculatorMinDrives calculator = new BacktrackingCalculatorMinDrives();
-            
-            int[] useda = { 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49 , 49, 49, 49, 49, 49 ,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49};
-            int[] total = { 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50 , 50, 50, 50, 50, 50 ,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50};
-            List<HardDrive> hardDrives = BuildHardDrives(useda, total);
-            int result = calculator.Calculate(hardDrives);
-            Assert.AreEqual(hardDrives.Count, 50);
-            Assert.AreEqual(result, 49);            
-        }
+       
 
         [TestMethod]
         public void CalculateExampleThreeTestWithFirstFull()
@@ -185,8 +152,6 @@ namespace MinDriveTests
             Assert.AreEqual(hardDrives.Count, 50);
             Assert.AreEqual(result, 50);
         }
-
-
 
         private List<HardDrive> BuildHardDrives(int[] used, int[] total)
         {
