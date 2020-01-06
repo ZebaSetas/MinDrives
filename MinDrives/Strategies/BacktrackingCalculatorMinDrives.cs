@@ -59,9 +59,6 @@ namespace Strategies
                     for (int nextPosition = hardDrivePosition+1; nextPosition < hardDrives.Length; nextPosition++)
                     {
                         bool positionIsNotMarked = !hardDrives[nextPosition].IsMarked;
-                        //  bool positionIsNotCurrentHardDrive = hardDrivePosition != nextPosition;
-                        //  bool isValidPosition = positionIsNotMarked && positionIsNotCurrentHardDrive;
-                        //if (isValidPosition)
                         if (positionIsNotMarked)
                         {
                             int newSolution = FindNoOptimalSolution(hardDrives, nextPosition, solution);

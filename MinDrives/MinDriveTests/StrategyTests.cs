@@ -68,7 +68,7 @@ namespace MinDriveTests
         [ExpectedException(typeof(StrategyException))]
         public void CalculateWithInvalidHarDriveTwoTest()
         {
-                        BacktrackingCalculatorMinDrives calculator = new BacktrackingCalculatorMinDrives();
+            BacktrackingCalculatorMinDrives calculator = new BacktrackingCalculatorMinDrives();
             int[] used = { 10, 10, 10, 10, 10, 10, 12, 10, 10, 10 };
             int[] total = { 11, 11, 11, 11, 11, 11, 11, 11, 11, 11 };
             List<HardDrive> hardDrives = BuildHardDrives(used, total);
