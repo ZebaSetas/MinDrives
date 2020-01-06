@@ -33,5 +33,26 @@ namespace MinDriveTests
             int[] used = { 4, 5 };
             controller.MinDrives(used,null);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(BusinessLogicException))]
+        public void CalculateWithOneInvalidHarDriveTest()
+        {
+            int[] used = {11};
+            int[] total = {10};
+            ICalculatorLogic controller = new CalculatorLogic();
+            controller.MinDrives(used, total);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(BusinessLogicException))]
+        public void CalculateWithInvalidHarDriveTwoTest()
+        {
+            
+            int[] used = { 10, 10, 10, 10, 10, 10, 12, 10, 10, 10 };
+            int[] total = { 11, 11, 11, 11, 11, 11, 11, 11, 11, 11 };
+            ICalculatorLogic controller = new CalculatorLogic();
+            controller.MinDrives(used, total);
+        }
     }
 }
