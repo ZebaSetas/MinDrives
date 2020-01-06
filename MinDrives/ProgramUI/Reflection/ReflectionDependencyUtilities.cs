@@ -24,8 +24,7 @@ namespace ProgramUI.Reflection
                 return calculator;
             }
             catch(Exception e)
-            {
-                Console.WriteLine(e.StackTrace);
+            {                
                 throw new ReflectionException("There is a problem to find ICalculatorLogic dll",e);
             }            
         }
@@ -35,8 +34,7 @@ namespace ProgramUI.Reflection
             try
             {
                 string nameDllFile = System.Configuration.ConfigurationManager.AppSettings["IStrategy"];
-                string pathGlobal = System.IO.Directory.GetCurrentDirectory() + "\\" + nameDllFile;
-                Console.WriteLine(pathGlobal);
+                string pathGlobal = System.IO.Directory.GetCurrentDirectory() + "\\" + nameDllFile;                
                 var dllFile = new FileInfo(pathGlobal);
                 Assembly assembly = Assembly.LoadFrom(dllFile.FullName);
                 IEnumerable<Type> implementations = GetTypesInAssembly<IStrategy>(assembly);
