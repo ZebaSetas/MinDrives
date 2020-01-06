@@ -13,12 +13,13 @@ namespace Strategies
             //sorted by minimum space used, because it avoid entries in the stack            
             bool thereIsAHardDrive = hardDrives != null && hardDrives.Count > 0;
             if (!thereIsAHardDrive) throw new StrategyException("There is no HardDrive");
-            bool thereIsOnlyHardDrive = hardDrives.Count == 1;
+            HardDriveMarked[] markedHardDrives = BuildMarkedHardDrives(hardDrives);
+            bool thereIsOnlyHardDrive = markedHardDrives.Length == 1;
             if (thereIsOnlyHardDrive) return 1;
             else
             {
                 hardDrives.Sort();
-                HardDriveMarked[] markedHardDrives = BuildMarkedHardDrives(hardDrives);
+                
                 bool isThereAnOptimalSolution = CheckOptimalSolution(markedHardDrives);
                 if (isThereAnOptimalSolution) return 1;
                 else
