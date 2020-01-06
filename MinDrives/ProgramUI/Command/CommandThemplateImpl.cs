@@ -18,7 +18,6 @@ namespace ProgramUI.Command
             Console.WriteLine("2 - Check using the file");
             Console.WriteLine();
             Console.Write("Select menu option: ");
-
             
         }
 
